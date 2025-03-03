@@ -1,0 +1,165 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "toc_visible": true,
+      "authorship_tag": "ABX9TyP4mWWZZXSeriD2BiJKW9Uz",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/rafapupoh/meu-site/blob/master/projetometerologiaipynb\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def validar_mes(mes):\n",
+        "    \"\"\"Valida se o mês está dentro do intervalo de 1 a 12.\"\"\"\n",
+        "    try:\n",
+        "        mes = int(mes)\n",
+        "        if 1 <= mes <= 12:\n",
+        "            return mes\n",
+        "        else:\n",
+        "            return None\n",
+        "    except ValueError:\n",
+        "        return None\n",
+        "\n",
+        "def validar_temperatura(temperatura):\n",
+        "    \"\"\"Valida se a temperatura está dentro do intervalo de -60°C a +50°C.\"\"\"\n",
+        "    try:\n",
+        "        temperatura = float(temperatura)\n",
+        "        if -60 <= temperatura <= 50:\n",
+        "            return temperatura\n",
+        "        else:\n",
+        "            return None\n",
+        "    except ValueError:\n",
+        "        return None\n",
+        "\n",
+        "def validar_pluviometria(pluviometria):\n",
+        "    \"\"\"Valida se o índice pluviométrico é um valor não negativo.\"\"\"\n",
+        "    try:\n",
+        "        pluviometria = float(pluviometria)\n",
+        "        if pluviometria >= 0:\n",
+        "            return pluviometria\n",
+        "        else:\n",
+        "            return None\n",
+        "    except ValueError:\n",
+        "        return None"
+      ],
+      "metadata": {
+        "id": "CR1xKwykF-my"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "Ls3gH2syG2dh"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "meses_extenso = {\n",
+        "    1: \"Janeiro\", 2: \"Fevereiro\", 3: \"Março\", 4: \"Abril\", 5: \"Maio\", 6: \"Junho\",\n",
+        "    7: \"Julho\", 8: \"Agosto\", 9: \"Setembro\", 10: \"Outubro\", 11: \"Novembro\", 12: \"Dezembro\"\n",
+        "}\n",
+        "\n",
+        "dados_anuais = {}\n",
+        "for mes_num in range(1, 13):\n",
+        "    while True:\n",
+        "        mes = input(f\"Digite o mês ({mes_num}): \")\n",
+        "        mes_validado = validar_mes(mes)\n",
+        "        if mes_validado is None:\n",
+        "            print(\"Mês inválido. Insira um número de 1 a 12.\")\n",
+        "        else:\n",
+        "            break\n",
+        "    while True:\n",
+        "        temp_media = input(f\"Digite a temperatura média de {mes_num}: \")\n",
+        "        temp_media_validada = validar_temperatura(temp_media)\n",
+        "        if temp_media_validada is None:\n",
+        "            print(\"Temperatura média inválida.\")\n",
+        "        else:\n",
+        "            break\n",
+        "    while True:\n",
+        "        pluviometria = input(f\"Digite o índice pluviométrico de {mes_num}: \")\n",
+        "        pluviometria_validada = validar_pluviometria(pluviometria)\n",
+        "        if pluviometria_validada is None:\n",
+        "            print(\"Índice pluviométrico inválido.\")\n",
+        "        else:\n",
+        "            break\n",
+        "    while True:\n",
+        "        temp_maxima = input(f\"Digite a temperatura máxima de {mes_num}: \")\n",
+        "        temp_maxima_validada = validar_temperatura(temp_maxima)\n",
+        "        if temp_maxima_validada is None:\n",
+        "            print(\"Temperatura máxima inválida.\")\n",
+        "        else:\n",
+        "            break\n",
+        "    dados_anuais[mes_num] = {\n",
+        "        \"temperatura_media\": temp_media_validada,\n",
+        "        \"pluviometria\": pluviometria_validada,\n",
+        "        \"temperatura_maxima\": temp_maxima_validada\n",
+        "    }"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "G0CdAVQ8G5sS",
+        "outputId": "80f6a474-eff3-4548-8017-2d2101f99d39"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "Digite o mês (1): 1\n",
+            "Digite a temperatura média de 1: 34.3\n",
+            "Digite o índice pluviométrico de 1: 10\n",
+            "Digite a temperatura máxima de 1: 34.3\n",
+            "Digite o mês (2): 2\n",
+            "Digite a temperatura média de 2: 36\n",
+            "Digite o índice pluviométrico de 2: 10\n",
+            "Digite a temperatura máxima de 2: 36\n",
+            "Digite o mês (3): 3\n",
+            "Digite a temperatura média de 3: 31\n",
+            "Digite o índice pluviométrico de 3: 10\n",
+            "Digite a temperatura máxima de 3: 31\n",
+            "Digite o mês (4): 4\n",
+            "Digite a temperatura média de 4: 31.7\n",
+            "Digite o índice pluviométrico de 4: 10\n",
+            "Digite a temperatura máxima de 4: 31.7\n",
+            "Digite o mês (5): 31\n",
+            "Mês inválido. Insira um número de 1 a 12.\n",
+            "Digite o mês (5): 10\n",
+            "Digite a temperatura média de 5: 31\n",
+            "Digite o índice pluviométrico de 5: 10\n",
+            "Digite a temperatura máxima de 5: 31\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
